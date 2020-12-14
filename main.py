@@ -15,7 +15,7 @@ class NQSolver:
         for row in range(self.numberOfQueens):
             for col in range(self.numberOfQueens):
                 if self.board[row][col] == 1:
-                    print('\033[93m', "Q", end="  ")
+                    print('\033[93m', "♛", end="  ")
                 else: print('\033[0m', "-", end="  ")
             print()
 
