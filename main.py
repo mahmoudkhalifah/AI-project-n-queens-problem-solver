@@ -14,7 +14,9 @@ class NQSolver:
     def printBoard(self):
         for row in range(self.numberOfQueens):
             for col in range(self.numberOfQueens):
-                print(self.board[row][col], end="  ")
+                if self.board[row][col] == 1:
+                    print("Q", end="  ")
+                else: print("-", end="  ")
             print()
 
     def isSafe(self,row,col):
@@ -51,9 +53,8 @@ class NQSolver:
         return False
 
     def solution(self):
-        if self.solve(0):
-            self.printBoard()
-        else: print("solution dose not exist!")
+        self.solve(0)
+        self.printBoard()
 
 
 solver = NQSolver(int(input("Enter number of queens \n")))
