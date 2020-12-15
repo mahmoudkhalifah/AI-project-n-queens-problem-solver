@@ -4,7 +4,7 @@ class NQSolver:
 
     # constructor to just initialize the matrix
     def __init__(self, numberOfQueens):
-        if numberOfQueens > 3:
+        if numberOfQueens > 3 or numberOfQueens == 1:
             self.numberOfQueens = numberOfQueens
             self.board = [[0 for i in range(numberOfQueens)] for j in range(numberOfQueens)]
             # col are inside, rows are outside
