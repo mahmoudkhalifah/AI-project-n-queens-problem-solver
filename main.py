@@ -1,3 +1,6 @@
+import time
+
+
 class NQSolver:
     numberOfQueens = 0
     board = []
@@ -16,26 +19,27 @@ class NQSolver:
             for col in range(self.numberOfQueens):
                 if self.board[row][col] == 1:
                     print('\033[93m', "♛", end="  ")
-                else: print('\033[0m', "-", end="  ")
+                else:
+                    print('\033[0m', "-", end="  ")
             print()
 
-    def isSafe(self,row,col):
+    def isSafe(self, row, col):
         # check for previous columns in the same row
         for i in range(col):
             if self.board[row][i] == 1:
                 return False
         # check for upper diagonal
-        for i, j in zip(range(row,-1,-1), range(col,-1,-1)):
+        for i, j in zip(range(row, -1, -1), range(col, -1, -1)):
             if self.board[i][j] == 1:
                 return False
         # check for lower diagonal
-        for i, j in zip(range(row,self.numberOfQueens,+1), range(col,-1,-1)):
+        for i, j in zip(range(row, self.numberOfQueens, +1), range(col, -1, -1)):
             if self.board[i][j] == 1:
                 return False
 
         return True
 
-    def solve(self,col):
+    def solve(self, col):
         # base (end of columns)
         if col >= self.numberOfQueens:
             return True
@@ -45,7 +49,7 @@ class NQSolver:
             if self.isSafe(row, col):
                 self.board[row][col] = 1
                 # continue to place the next queens
-                if self.solve(col+1):
+                if self.solve(col + 1):
                     return True
                 # if solve is false so it doesn't solve the problem and we backtrack to the previous
                 self.board[row][col] = 0
@@ -58,4 +62,7 @@ class NQSolver:
 
 
 solver = NQSolver(int(input("Enter number of queens \n")))
+start = time.time()
 solver.solution()
+end = time.time()
+print(f'\nIt Takes {end-start} Seconds')
