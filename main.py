@@ -2,8 +2,6 @@ import time
 
 
 class NQSolver:
-    numberOfQueens = 0
-    board = []
 
     # constructor to just initialize the matrix
     def __init__(self, numberOfQueens):
@@ -65,4 +63,4 @@ solver = NQSolver(int(input("Enter number of queens \n")))
 start = time.time()
 solver.solution()
 end = time.time()
-print(f'\nIt Takes {end-start} Seconds')
+print(f'\nIt Takes {round(end-start,4)} Seconds')
